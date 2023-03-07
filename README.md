@@ -7,3 +7,8 @@ Para las barras de navegacion
 
 Para los estilos
 >npm install --save styled-components
+
+Redux
+
+>npm i -S redux
+>npm i -S react-redux
