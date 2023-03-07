@@ -1,11 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { NavLink,Routes,Route } from 'react-router-dom';
+import { NavLink, Routes, Route } from 'react-router-dom';
 import Tienda from './componentes/Tienda';
 import Blog from './componentes/Blog';
 import Inicio from './componentes/Inicio';
 import Error404 from './componentes/Error404';
+import Carrito from './componentes/carrito';
 const App = () => {
+  const productos = [
+    { id: 1, nombre: 'Producto 1' },
+    { id: 2, nombre: 'Producto 2' },
+    { id: 3, nombre: 'Producto 3' },
+    { id: 4, nombre: 'Producto 4' }
+  ];
+  const [carrito, cambiarCarrito] = useState([]);
+
+  const agregarProductoAlCarrito = (idProductoAAgregar, nombre) => {
+    // Si el carrito esta vacio entonces agregamos el producto
+    if (carrito.length === 0) {
+      cambiarCarrito([{ id: idProductoAAgregar, nombre: nombre, cantidad: 1 }]);
+    } else {
+      // Si ya tiene el producto entonces actualizamos el valor
+      // Si no tiene el producto entonces lo agregamos
+
+      // Para poder editar el arreglo lo tenemos que clonar
+      const nuevoCarrito = [...carrito];
+      // Comprobamos si el carrito ya tiene el id del producto a agregar
+      const yaEstaEnCarrito = nuevoCarrito.filter((productoDeCarrito) => {
+        return productoDeCarrito.id === idProductoAAgregar
+      }).length > 0;
+      // Si ya esta en carrito, se tiene que actualizar
+      if (yaEstaEnCarrito) {
+        // Para ello tenemos que buscar su posicion en el arreglo
+        // y en base a su posicion actualizamos el valor
+        nuevoCarrito.forEach((productoDeCarrito, index) => {
+
+          // Si el producto del id es igual al producto que queremos agregar, entonces sera la misma cantidad mas 1
+          if (productoDeCarrito.id === idProductoAAgregar) {
+            const cantidad = nuevoCarrito[index].cantidad;
+            nuevoCarrito[index] = { id: idProductoAAgregar, nombre: nombre, cantidad: cantidad + 1 }
+          }
+        });
+      } else {
+        nuevoCarrito.push({
+          id: idProductoAAgregar, nombre: nombre, cantidad: 1
+        });
+      }
+      cambiarCarrito(nuevoCarrito);
+    }
+
+  }
+
   return (
     <Contenedor>
       <Menu>
@@ -15,14 +60,19 @@ const App = () => {
       </Menu>
       <main>
         <Routes>
-           <Route path='*' element={<Error404/>}/>
-           <Route path='/' element={<Inicio/>}/>
-           <Route path='/Blog' element={<Blog/>}/>
-           <Route path='/Tienda' element={<Tienda/>}/>
+          <Route path='*' element={<Error404 />} />
+          <Route path='/' element={<Inicio />} />
+          <Route path='/Blog' element={<Blog />} />
+          <Route path='/Tienda' element={
+            <Tienda
+              productos={productos}
+              agregarProductoAlCarrito={agregarProductoAlCarrito}
+            />
+          } />
         </Routes>
       </main>
       <aside>
-        <h3>sidebar</h3>
+        <Carrito carrito={carrito}/>
       </aside>
     </Contenedor>
   );
