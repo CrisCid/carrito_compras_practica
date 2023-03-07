@@ -11,4 +11,5 @@ Para los estilos
 Redux
 
 >npm i -S redux
+
 >npm i -S react-redux
