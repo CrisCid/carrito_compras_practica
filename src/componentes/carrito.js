@@ -1,26 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
-const Carrito = ({carrito}) => {
-    
+const Carrito = ({ carrito }) => {
+
     return (
         <div>
             <h3>Carrito de Compras</h3>
             {carrito.length > 0 ?
-             carrito.map((producto, index)=> {
-                    return(
+                carrito.map((producto, index) => {
+                    return (
                         <Producto key={index}>
                             <NombreProducto>
-                            {producto.nombre}
+                                {producto.nombre}
 
                             </NombreProducto>
                             Cantidad:  {producto.cantidad}
                         </Producto>
                     );
-             })
-            :
-             <p>Aun no has agregado productos al carrito</p>   
-        }
+                })
+                :
+                <p>Aun no has agregado productos al carrito</p>
+            }
         </div>
     );
 }
@@ -32,4 +33,9 @@ const Producto = styled.div`
 const NombreProducto = styled.p`
     font-weight: bold;
 `
-export default Carrito;
+const mapStateToProps = (estado) => {
+    return {
+        carrito: estado.carrito
+    }
+}
+export default connect(mapStateToProps)(Carrito);
