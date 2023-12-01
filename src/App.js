@@ -39,7 +39,8 @@ const App = () => {
 }
 
 const Contenedor = styled.div`
-    max-width: 1000px;
+    /* max-width: 1000px; */
+    max-width: 80%;
     padding: 40px;
     width: 90%;
     display: grid;

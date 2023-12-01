@@ -11,6 +11,8 @@ const Productos = ({ productos, agregarProductoAlCarrito }) => {
                     return (
                         <Producto key={index}>
                             <p>{producto.nombre}</p>
+                            {/* <img >{producto.imagen}</img> */}
+                            <ImagenTienda src={producto.imagen} className='imagenesT'></ImagenTienda>
                             <Boton
                                 onClick={() => agregarProductoAlCarrito(producto.id, producto.nombre)}
                             >
@@ -23,6 +25,9 @@ const Productos = ({ productos, agregarProductoAlCarrito }) => {
         </div>
     );
 }
+const ImagenTienda =  styled.img`
+    max-width: 200px;
+`;
 
 const ContenedorProductos = styled.div`
     display: grid;
