@@ -19,10 +19,10 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div class="container contenedor mt-5 pt-3 ">
-        <nav class="navbar navbar-expand-lg menu grid justify-content-evenly content-fluid">
-          <div class="row navbar-brand">
-            <div className="col-4 linkeos"><NavLink to="/">Inicio</NavLink></div>
+      <div class="container contenedor mt-5 mb-5 pt-3 rounded">
+        <nav class="navbar navbar-expand-lg menu grid justify-content-evenly content-fluid rounded">
+          <div class="row navbar-brand rounded">
+            <div className="col-4 "><NavLink to="/">Inicio</NavLink></div>
             
             <div className="col-4 linkeos"><NavLink to="/blog">Blog</NavLink></div>
             

@@ -3,13 +3,13 @@
     grid-template-columns: 2fr 1fr;
     background: #fff;
     box-shadow: 10px 10px 10px 10px rgba(129, 129, 129, 0.1);
-    border-radius: 1rem;
+   /*  border-radius: 1rem; */
     
 }
 .menu{
     grid-column: span 2;
     background: linear-gradient(120deg,#c8aba4,#32201f ,#c8aba4);
-    border-radius: 15px; 
+    /* border-radius: 15px;  */
 
 }
 .menu a{
@@ -17,11 +17,11 @@
 }
 .menu a:hover{
   color:white;
-  border-radius: 15px;
+ /*  border-radius: 15px; */
   border-color: white!important;
 }
 
-div nav div div:hover{
+/* div nav div div:hover{
   background: linear-gradient(120deg,#e69362,#5c3413 ,#b45918);
   background-size: 100%;
-}
+} */

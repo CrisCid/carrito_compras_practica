@@ -18,8 +18,10 @@ const Productos = ({ productos, agregarProductoAlCarrito }) => {
                 /* para cada producto */
                   className="product m-2 card-body d-flex flex-column" 
                   key={index}
-                >
+                > 
+                  <div className="d-flex flex-column  align-center align-items-center">
                   <p className="card-title">{producto.nombre}</p>
+                  </div>
                   <img
                   /* Imagenes */
                     className="mb-3 tiendaimagenes rounded w-100 "
