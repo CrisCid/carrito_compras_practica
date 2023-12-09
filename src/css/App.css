@@ -2,26 +2,31 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     background: #fff;
-    box-shadow: 10px 10px 10px 10px rgba(129, 129, 129, 0.1);
+    /* box-shadow: 10px 10px 10px 10px rgba(129, 129, 129, 0.736); */
    /*  border-radius: 1rem; */
     
 }
 .menu{
     grid-column: span 2;
     background: linear-gradient(120deg,#c8aba4,#32201f ,#c8aba4);
-    /* border-radius: 15px;  */
+   /*  width: 141%!important; */
 
 }
 .menu a{
   color:white;
+  
 }
 .menu a:hover{
   color:white;
  /*  border-radius: 15px; */
   border-color: white!important;
 }
-
-/* div nav div div:hover{
-  background: linear-gradient(120deg,#e69362,#5c3413 ,#b45918);
-  background-size: 100%;
+/* .barra{
+  width: 1000px;
 } */
+.carro{
+  height: 75vh;
+}
+.carro2{
+  height: 100%;
+}

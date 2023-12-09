@@ -12,30 +12,30 @@ const Productos = ({ productos, agregarProductoAlCarrito }) => {
           return (
             /* Separacion de cada producto por columna */
             <div className="col-sm-6 col-12 mb-3">
-                {/* Formato de tarjeta */}
+              {/* Formato de tarjeta */}
               <div className="card">
                 <div
-                /* para cada producto */
-                  className="product m-2 card-body d-flex flex-column" 
+                  /* para cada producto */
+                  className="product m-2 card-body d-flex flex-column"
                   key={index}
-                > 
+                >
                   <div className="d-flex flex-column  align-center align-items-center">
-                  <p className="card-title">{producto.nombre}</p>
+                    <p className="card-title">{producto.nombre}</p>
                   </div>
                   <img
-                  /* Imagenes */
+                    /* Imagenes */
                     className="mb-3 tiendaimagenes rounded w-100 "
                     src={producto.imagen}
                   ></img>
                   <div class="d-grid col-6 mx-auto w-100">
-                  <button 
-                    className="botones btn btn-outline-dark fs-6 "
-                    onClick={() =>
-                      agregarProductoAlCarrito(producto.id, producto.nombre)
-                    }
-                  >
-                    Agregar al carrito
-                  </button>
+                    <button
+                      className="botones btn btn-outline-dark fs-6 "
+                      onClick={() =>
+                        agregarProductoAlCarrito(producto.id, producto.nombre)
+                      }
+                    >
+                      Agregar al carrito
+                    </button>
                   </div>
                 </div>
               </div>
