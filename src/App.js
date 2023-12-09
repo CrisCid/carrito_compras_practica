@@ -1,14 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
-import { NavLink, Routes, Route } from 'react-router-dom';
-import Tienda from './componentes/Tienda';
-import Blog from './componentes/Blog';
-import Inicio from './componentes/Inicio';
-import Error404 from './componentes/Error404';
-import Carrito from './componentes/carrito';
-import { Provider } from 'react-redux';
-import { legacy_createStore } from 'redux';
-import reducer from './reducers/tiendaReducer';
+import React from "react";
+
+import { NavLink, Routes, Route } from "react-router-dom";
+import Tienda from "./componentes/Tienda";
+import Blog from "./componentes/Blog";
+import Inicio from "./componentes/Inicio";
+import Error404 from "./componentes/Error404";
+import Carrito from "./componentes/carrito";
+import { Provider } from "react-redux";
+import { legacy_createStore } from "redux";
+import reducer from "./reducers/tiendaReducer";
+import "./css/App.css";
+/* Bootstrap */
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   // el reducer es una funcion, que edita nuestro estado global
@@ -16,58 +19,32 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Contenedor>
-        <Menu>
-          <NavLink to="/">Inicio</NavLink>
-          <NavLink to="/blog">Blog</NavLink>
-          <NavLink to="/tienda">Tienda</NavLink>
-        </Menu>
+      <div class="container contenedor mt-5 pt-3 ">
+        <nav class="navbar navbar-expand-lg menu grid justify-content-evenly content-fluid">
+          <div class="row navbar-brand">
+            <div className="col-4 linkeos"><NavLink to="/">Inicio</NavLink></div>
+            
+            <div className="col-4 linkeos"><NavLink to="/blog">Blog</NavLink></div>
+            
+            <div className="col-4 linkeos"><NavLink to="/tienda">Tienda</NavLink></div>
+            
+          </div>
+        </nav>
         <main>
           <Routes>
-            <Route path='*' element={<Error404 />} />
-            <Route path='/' element={<Inicio />} />
-            <Route path='/Blog' element={<Blog />} />
-            <Route path='/Tienda' element={<Tienda />} />
+            <Route path="*" element={<Error404 />} />
+            <Route path="/" element={<Inicio />} />
+            <Route path="/Blog" element={<Blog />} />
+            <Route path="/Tienda" element={<Tienda />} />
           </Routes>
         </main>
+
         <aside>
           <Carrito />
         </aside>
-      </Contenedor>
+      </div>
     </Provider>
   );
-}
+};
 
-const Contenedor = styled.div`
-    /* max-width: 1000px; */
-    max-width: 80%;
-    padding: 40px;
-    width: 90%;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 2fr 1fr;
-    background: #fff;
-    margin: 40px 0;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
-`;
-
-const Menu = styled.nav`
-    width: 100%;
-    text-align: center;
-    background: #092c4c;
-    grid-column: span 2;
-    border-radius: 3px;
- 
-    a {
-        color: #fff;
-        display: inline-block;
-        padding: 15px 20px;
-    }
- 
-    a:hover {
-        background: #1d85e8;
-        text-decoration: none;
-    }
-`;
 export default App;

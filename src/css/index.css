@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
  
-* {
+/* * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-}
+} */
  
 body {
-	background: lightgray;
+	background: #32201f!important;
+	
 	font-family: 'Open Sans', sans-serif;
 }
  
-#root {
+/* #root {
 	display: flex;
 	justify-content: center;
 }
@@ -19,7 +20,7 @@ body {
 a {
 	text-decoration: none;
 }
- 
+  */
 a:hover {
 	text-decoration: underline;
 }

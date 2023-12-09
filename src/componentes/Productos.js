@@ -1,87 +1,64 @@
-import React from 'react';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
+import "./../css/Productos.css";
 
 const Productos = ({ productos, agregarProductoAlCarrito }) => {
-    return (
-        <div>
-            <h3>Productos</h3>
-            <ContenedorProductos>
-                {productos.map((producto, index) => {
-                    return (
-                        <Producto key={index}>
-                            <p>{producto.nombre}</p>
-                            {/* <img >{producto.imagen}</img> */}
-                            <ImagenTienda src={producto.imagen} className='imagenesT'></ImagenTienda>
-                            <Boton
-                                onClick={() => agregarProductoAlCarrito(producto.id, producto.nombre)}
-                            >
-                                Agregar al carrito
-                            </Boton>
-                        </Producto>
-                    );
-                })}
-            </ContenedorProductos>
-        </div>
-    );
-}
-const ImagenTienda =  styled.img`
-    max-width: 200px;
-`;
+  return (
+    <div>
+      {/* <p className="fs-5">Productos</p> */}
+      {/* Contenedor de la parte de los productos */}
+      <div className="contenedorProductos grid row d-flex">
+        {productos.map((producto, index) => {
+          return (
+            /* Separacion de cada producto por columna */
+            <div className="col-sm-6 col-12 mb-3">
+                {/* Formato de tarjeta */}
+              <div className="card">
+                <div
+                /* para cada producto */
+                  className="product m-2 card-body d-flex flex-column" 
+                  key={index}
+                >
+                  <p className="card-title">{producto.nombre}</p>
+                  <img
+                  /* Imagenes */
+                    className="mb-3 tiendaimagenes rounded w-100 "
+                    src={producto.imagen}
+                  ></img>
+                  <div class="d-grid col-6 mx-auto w-100">
+                  <button 
+                    className="botones btn btn-outline-dark fs-6 "
+                    onClick={() =>
+                      agregarProductoAlCarrito(producto.id, producto.nombre)
+                    }
+                  >
+                    Agregar al carrito
+                  </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
-const ContenedorProductos = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 20px 0;
-`;
-
-const Producto = styled.div`
-    padding: 20px;
-    border: 1px solid #ebeef3;
-    border-radius: 5px;
-    text-align: center;
- 
-    p {
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-`;
-
-const Boton = styled.button`
-    border: none;
-    background: #1c85e8;
-    color: #fff;
-    font-size: 12px;
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
-    display: inline-block;
-    padding: 10px 20px;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 3px;
-    transition: .3s ease all;
- 
-    &:hover {
-        background: #1c6ab9;
-    }
-`;
 const mapStateToProps = (estado) => {
-    return {
-        productos: estado.productos
-    }
-}
+  return {
+    productos: estado.productos,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
-    return {
-        agregarProductoAlCarrito: (idProductoAAgregar, nombre) => {
-            dispatch(
-                {
-                    type: 'AGREGAR_PRODUCTO_AL_CARRITO',
-                    idProductoAAgregar: idProductoAAgregar,
-                    nombre: nombre
-                }
-            );
-        }
-    }
-}
+  return {
+    agregarProductoAlCarrito: (idProductoAAgregar, nombre) => {
+      dispatch({
+        type: "AGREGAR_PRODUCTO_AL_CARRITO",
+        idProductoAAgregar: idProductoAAgregar,
+        nombre: nombre,
+      });
+    },
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Productos);

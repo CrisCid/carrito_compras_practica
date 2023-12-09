@@ -1,38 +1,32 @@
 import React from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
+import '../css/Carrito.css';
 
 const Carrito = ({ carrito }) => {
 
     return (
-        <div>
-            <h3>Carrito de Compras</h3>
+        
+        <div className='ml-5'>
+            <h3 className='display-6 '>Carrito de Compras</h3>
             {carrito.length > 0 ?
                 carrito.map((producto, index) => {
                     return (
-                        <Producto key={index}>
-                            <NombreProducto>
+                        <div className='border-bottom border-start border-danger fs-6' key={index}>
+                            <p className='nombreProducto'>
                                 {producto.nombre}
 
-                            </NombreProducto>
+                            </p>
                             Cantidad:  {producto.cantidad}
-                        </Producto>
+                        </div>
                     );
                 })
                 :
-                <p>Aun no has agregado productos al carrito</p>
+                <p className='text-break'>Aun no has agregado productos al carrito</p>
             }
         </div>
     );
 }
-const Producto = styled.div`
-    padding: 10px;
-    border-bottom: 1px solid #ebebf3;
-    font-size: 14px;    
-`;
-const NombreProducto = styled.p`
-    font-weight: bold;
-`
+
 const mapStateToProps = (estado) => {
     return {
         carrito: estado.carrito
