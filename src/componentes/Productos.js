@@ -7,36 +7,39 @@ const Productos = ({ productos, agregarProductoAlCarrito }) => {
     <div>
       {/* <p className="fs-5">Productos</p> */}
       {/* Contenedor de la parte de los productos */}
-      <div className="contenedorProductos grid row d-flex">
+      <div className="contenedorProductos d-grid row d-flex">
         {productos.map((producto, index) => {
           return (
             /* Separacion de cada producto por columna */
-            <div className="col-sm-4 mb-3">
+            <div className="col-sm-3 mb-3 ">
               {/* Formato de tarjeta */}
-              <div className="card col-12">
+              <div className="card col-12 h-100">
                 <div
                   /* para cada producto */
                   className="product m-2 card-body d-flex flex-column"
                   key={index}
                 >
-                  <div className="d-flex flex-column  align-center align-items-center">
-                    <p className="card-title">{producto.nombre}</p>
-                  </div>
                   <img
                     /* Imagenes */
-                    className="mb-3 tiendaimagenes rounded w-100 "
+                    className="mb-3 tiendaimagenes rounded"
                     src={producto.imagen}
                   ></img>
-                  <div class="d-grid col-4 mx-auto w-100">
-                    <button
-                      className="botones btn btn-outline-dark fs-6 "
-                      onClick={() =>
-                        agregarProductoAlCarrito(producto.id, producto.nombre)
-                      }
-                    >
-                      Agregar al carrito
-                    </button>
+                  <div className="d-flex flex-column  align-center align-items-center ">
+                    <p className="fs-6 mb-1 ">{producto.nombre}</p>
+                    <p className="fs-6 mb-1">{producto.marca}</p>
                   </div>
+                  {/* <div className=""> */}
+                    <div class="d-flex flex-column justify-content-end  h-100">
+                      <button
+                        className="botones btn btn-outline-dark btn-sm"
+                        onClick={() =>
+                          agregarProductoAlCarrito(producto.id, producto.nombre)
+                        }
+                      >
+                        Agregar al carrito
+                      </button>
+                    </div>
+                  {/* </div> */}
                 </div>
               </div>
             </div>

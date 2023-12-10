@@ -7,10 +7,20 @@
     
 }
 .menu{
-    grid-column: span 2;
+   /*  grid-column: span 2; */
     background: linear-gradient(120deg,#c8aba4,#32201f ,#c8aba4);
    /*  width: 141%!important; */
+   display: flex;
+   flex-direction: column;
+   
 
+}
+
+.menucarro{
+  align-items: flex-end!important;
+}
+.menulinks{
+  align-items: flex-start!important;
 }
 .menu a{
   color:white;
@@ -29,4 +39,7 @@
 }
 .carro2{
   height: 100%;
+}
+.ancho{
+  width: 35vh!important;
 }

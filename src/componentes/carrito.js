@@ -6,9 +6,9 @@ const Carrito = ({ carrito }) => {
   return (
     <div className="carrito1">
       <div className="">
-        <h3 className="display-6 mt-2 mb-3">Carrito de Compras</h3>
+        {/* <h3 className="display-6 mt-2 mb-3">Carrito de Compras</h3> */}
       </div>
-      <div className="carrito2 border-start border-bottom">
+      <div className="carrito2 border-start border-bottom overflow-auto ">
         {carrito.length > 0 ? (
           carrito.map((producto, index) => {
             return (

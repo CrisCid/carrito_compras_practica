@@ -1,13 +1,13 @@
 const estadoInicial = {
     productos: [
-        { id: 1, nombre: 'Air Jordan 1 Zoom CMFT 2', imagen: 'https://nikeclprod.vtexassets.com/arquivos/ids/723484-1200-1200?v=638241050045270000&width=1200&height=1200&aspect=true' },
-        { id: 2, nombre: 'Adidas ADVANTAGE', imagen: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/da74b3ffcf3445deacaf93c1f33c6e3d_9366/Zapatillas_Advantage_Negro_IF2987_01_standard.jpg' },
-        { id: 3, nombre: 'PS5', imagen: 'https://www.pcfactory.cl/public/foto/48854/4_1000.jpg?t=1690300273550' },
-        { id: 4, nombre: 'Samsung Galaxy S23 Ultra', imagen: 'https://http2.mlstatic.com/D_NQ_NP_634820-MLU72491363640_102023-O.webp' },
-        { id: 5, nombre: 'Air Jordan 1 Zoom CMFT 2', imagen: 'https://nikeclprod.vtexassets.com/arquivos/ids/723484-1200-1200?v=638241050045270000&width=1200&height=1200&aspect=true' },
-        { id: 6, nombre: 'Adidas ADVANTAGE', imagen: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/da74b3ffcf3445deacaf93c1f33c6e3d_9366/Zapatillas_Advantage_Negro_IF2987_01_standard.jpg' },
-        { id: 7, nombre: 'PS5', imagen: 'https://www.pcfactory.cl/public/foto/48854/4_1000.jpg?t=1690300273550' },
-        { id: 8, nombre: 'Samsung Galaxy S23 Ultra', imagen: 'https://http2.mlstatic.com/D_NQ_NP_634820-MLU72491363640_102023-O.webp' }
+        { id: 1, nombre: 'Air Jordan 1 Zoom CMFT 2',marca: 'Nike', imagen: 'https://nikeclprod.vtexassets.com/arquivos/ids/723484-1200-1200?v=638241050045270000&width=1200&height=1200&aspect=true' },
+        { id: 2, nombre: 'ADVANTAGE',marca: 'Adidas ', imagen: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/da74b3ffcf3445deacaf93c1f33c6e3d_9366/Zapatillas_Advantage_Negro_IF2987_01_standard.jpg' },
+        { id: 3, nombre: 'PS5',marca: 'Sony', imagen: 'https://www.pcfactory.cl/public/foto/48854/4_1000.jpg?t=1690300273550' },
+        { id: 4, nombre: 'Galaxy S23 Ultra',marca: 'Samsung ', imagen: 'https://http2.mlstatic.com/D_NQ_NP_634820-MLU72491363640_102023-O.webp' },
+        { id: 5, nombre: 'Air Jordan 1 Zoom CMFT 2',marca: 'Nike', imagen: 'https://nikeclprod.vtexassets.com/arquivos/ids/723484-1200-1200?v=638241050045270000&width=1200&height=1200&aspect=true' },
+        { id: 6, nombre: 'ADVANTAGE',marca: 'Adidas', imagen: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/da74b3ffcf3445deacaf93c1f33c6e3d_9366/Zapatillas_Advantage_Negro_IF2987_01_standard.jpg' },
+        { id: 7, nombre: 'PS5',marca: 'Sony', imagen: 'https://www.pcfactory.cl/public/foto/48854/4_1000.jpg?t=1690300273550' },
+        { id: 8, nombre: 'Galaxy S23 Ultra',marca: 'Samsung ', imagen: 'https://http2.mlstatic.com/D_NQ_NP_634820-MLU72491363640_102023-O.webp' }
     ],
     carrito: [],
     blog: [
