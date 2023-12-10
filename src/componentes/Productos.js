@@ -27,7 +27,7 @@ const Productos = ({ productos, agregarProductoAlCarrito }) => {
                   <div className="d-flex flex-column  align-center align-items-center ">
                     <p className="fs-6 mb-1 ">{producto.nombre}</p>
                     <p className="fs-6 mb-1">{producto.marca}</p>
-                    <p className="fs-6 mb-1">{producto.precio}</p>
+                    <p className="fs-6 mb-1">${producto.precio}</p>
                   </div>
                   {/* <div className=""> */}
                     <div className="d-flex flex-column justify-content-end  h-100">

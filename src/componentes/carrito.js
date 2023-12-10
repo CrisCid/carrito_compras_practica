@@ -19,12 +19,12 @@ const Carrito = ({ carrito }) => {
               > 
                 <div>
                 <p className="ms-1 mb-0 fs-5 col">{producto.nombre}</p>
-                <p className="ms-1 mb-0 fs-5 col">Precio:{producto.precio}</p>
+                <p className="ms-1 mb-0 fs-5 col">Precio:${producto.precio}</p>
                 <p className="ms-1 mb-0 fs-6 colores col">Cantidad: {producto.cantidad}</p>
                 
                 <div>
                 <img
-                    className="mb-3 tiendaimagenes rounded "
+                    className="mb-3 tiendaimagenes rounded carrocompras"
                     src={producto.imagen}
                   ></img>
                 </div>
