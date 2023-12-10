@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "./../css/Productos.css";
 
 const Productos = ({ productos, agregarProductoAlCarrito }) => {
+  
   return (
     <div>
       {/* <p className="fs-5">Productos</p> */}
@@ -19,11 +20,7 @@ const Productos = ({ productos, agregarProductoAlCarrito }) => {
                   className="product m-2 card-body d-flex flex-column"
                   key={index}
                 >
-                  <img
-                    /* Imagenes */
-                    className="mb-3 tiendaimagenes rounded"
-                    src={producto.imagen}
-                  ></img>
+                  <img className="mb-3 tiendaimagenes rounded" src={producto.imagen}></img>
                   <div className="d-flex flex-column  align-center align-items-center ">
                     <p className="fs-6 mb-1 ">{producto.nombre}</p>
                     <p className="fs-6 mb-1">{producto.marca}</p>
@@ -58,13 +55,14 @@ const mapStateToProps = (estado) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    agregarProductoAlCarrito: (idProductoAAgregar, nombre, precio, imagen) => {
+    agregarProductoAlCarrito: (idProductoAAgregar, nombre, precio, imagen,subtotal) => {
       dispatch({
         type: "AGREGAR_PRODUCTO_AL_CARRITO",
         idProductoAAgregar: idProductoAAgregar,
         nombre: nombre,
         precio: precio,
         imagen: imagen,
+        subtotal: subtotal,
       });
     },
   };

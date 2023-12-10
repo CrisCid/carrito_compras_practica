@@ -18,7 +18,7 @@ const App = () => {
   // el reducer es una funcion, que edita nuestro estado global
 
   const store = legacy_createStore(reducer);
-
+  
   return (
     <Provider store={store}>
       <div className="">
@@ -63,22 +63,25 @@ const App = () => {
                 id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel"
               >
-                <div className="offcanvas-header">
+                <div className="offcanvas-header row aling-items-start pt-0 pb-0">
                   {/* texto */}
                   <button
                     type="button"
-                    className="btn-close"
+                    className="btn-close col-4 mt-2"
                     data-bs-dismiss="offcanvas"
                     aria-label="Close"
                   ></button>
-                  <h3 className="display-6 mt-2 mb-3 ms-0">Carrito de Compras</h3>
+                  <h3 className="display-6 mt-2 mb-0 ms-0 col">Carrito de Compras</h3>
                   
                 </div>
                 <div className="offcanvas-body">
-                  <ul className="navbar-nav justify-content-end flex-grow-1 pe-3 ">
+                  <ul className="navbar-nav justify-content-end flex-grow-1 pe-3 h-100">
                     <div className="mb-3 carro2 ">
                       <Carrito />
-                      <button className="btn btn-warning mt-2">Comprar</button>
+                      <div className="d-grid gap-2">
+                        <button className="btn btn-dark btn-lg mt-2">Comprar</button>
+                      </div>
+                      
                     </div>
                   </ul>
                 </div>
