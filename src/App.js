@@ -60,6 +60,7 @@ const App = () => {
           {/*  */}
         </nav>
         <div className="container contenedor mb-5 mt-2">
+          
           <main>
             <Routes>
               <Route path="*" element={<Error404 />} />
@@ -68,9 +69,7 @@ const App = () => {
               <Route path="/Tienda" element={<Tienda />} />
             </Routes>
           </main>
-          {/* <aside>
-            <Carrito />
-          </aside> */}
+          
         </div>
       </div>
       <div className="bd-footer py-4 py-md-5 mt-5 bg-light ">
