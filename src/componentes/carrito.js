@@ -8,24 +8,33 @@ const Carrito = ({ carrito }) => {
       <div className="">
         {/* <h3 className="display-6 mt-2 mb-3">Carrito de Compras</h3> */}
       </div>
-      <div className="carrito2 border-start border-bottom overflow-auto ">
+      <div className="carrito2 border-start border overflow-auto ">
         {carrito.length > 0 ? (
           carrito.map((producto, index) => {
             return (
               <div
-                className=""
-                style={{zIndex:-100}}
+                className="border-bottom row d-flex flex-column"
+                style={{ zIndex: -100 }}
                 key={index}
-              >
-                <p className="ms-1">{producto.nombre}</p>
-                <p className="ms-1">
-                  Cantidad: {producto.cantidad}
-                </p>
+              > 
+                <div>
+                <p className="ms-1 mb-0 fs-5 col">{producto.nombre}</p>
+                <p className="ms-1 mb-0 fs-5 col">Precio:{producto.precio}</p>
+                <p className="ms-1 mb-0 fs-6 colores col">Cantidad: {producto.cantidad}</p>
+                
+                <div>
+                <img
+                    className="mb-3 tiendaimagenes rounded "
+                    src={producto.imagen}
+                  ></img>
+                </div>
+                </div>
               </div>
+              
             );
           })
         ) : (
-          <div className="border-bottom border-start border-danger fs-6 ">
+          <div className="border-bottom border-start fs-6 ">
             <p className="text-break ms-1">
               Aun no has agregado productos al carrito
             </p>

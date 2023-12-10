@@ -7,13 +7,13 @@ const Productos = ({ productos, agregarProductoAlCarrito }) => {
     <div>
       {/* <p className="fs-5">Productos</p> */}
       {/* Contenedor de la parte de los productos */}
-      <div className="contenedorProductos d-grid row d-flex">
+      <div className="contenedorProductos d-grid row d-flex col-sm-12">
         {productos.map((producto, index) => {
           return (
             /* Separacion de cada producto por columna */
-            <div className="col-sm-3 mb-3 ">
+            <div className="col-sm-2 mb-4">
               {/* Formato de tarjeta */}
-              <div className="card col-12 h-100">
+              <div className="card col-sm-12 h-100">
                 <div
                   /* para cada producto */
                   className="product m-2 card-body d-flex flex-column"
@@ -27,13 +27,14 @@ const Productos = ({ productos, agregarProductoAlCarrito }) => {
                   <div className="d-flex flex-column  align-center align-items-center ">
                     <p className="fs-6 mb-1 ">{producto.nombre}</p>
                     <p className="fs-6 mb-1">{producto.marca}</p>
+                    <p className="fs-6 mb-1">{producto.precio}</p>
                   </div>
                   {/* <div className=""> */}
-                    <div class="d-flex flex-column justify-content-end  h-100">
+                    <div className="d-flex flex-column justify-content-end  h-100">
                       <button
                         className="botones btn btn-outline-dark btn-sm"
                         onClick={() =>
-                          agregarProductoAlCarrito(producto.id, producto.nombre)
+                          agregarProductoAlCarrito(producto.id, producto.nombre, producto.precio, producto.imagen)
                         }
                       >
                         Agregar al carrito
@@ -57,11 +58,13 @@ const mapStateToProps = (estado) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    agregarProductoAlCarrito: (idProductoAAgregar, nombre) => {
+    agregarProductoAlCarrito: (idProductoAAgregar, nombre, precio, imagen) => {
       dispatch({
         type: "AGREGAR_PRODUCTO_AL_CARRITO",
         idProductoAAgregar: idProductoAAgregar,
         nombre: nombre,
+        precio: precio,
+        imagen: imagen,
       });
     },
   };

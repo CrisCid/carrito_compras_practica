@@ -10,6 +10,7 @@
 body {
 	background:rgb(41, 23, 23)!important;
 	font-family: 'Open Sans', sans-serif;
+	
 }
  
 #root {
@@ -17,7 +18,7 @@ body {
 	/* justify-content: center; */
 	/* flex-direction: row;
     flex-wrap: wrap; */
-	width: 100%!important;
+	/* width: 100%!important; */
 }
  
 a {

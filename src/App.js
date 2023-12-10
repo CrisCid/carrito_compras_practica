@@ -21,11 +21,11 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div class="">
+      <div className="">
         {/* Contenedor de la barra */}
-        <nav class=" navbar justify-content-evenly sticky-top menu w-auto mt-0  ">
-          <div class="row navbar-brand rounded barra ">
-            <div className="col-3 menulinks">
+        <nav className=" navbar justify-content-evenly sticky-top menu w-auto mt-0  border-bottom">
+          <div className="row navbar-brand rounded barra ">
+            <div className="col-3 menulinks ">
               <NavLink to="/">Inicio</NavLink>
             </div>
 
@@ -38,9 +38,9 @@ const App = () => {
             </div>
 
             {/* Carro */}
-            <div class="container-fluid col-3 menucarro">
+            <div className="container-fluid col-3 menucarro">
               <button
-                class="navbar-toggler bg-white"
+                className="navbar-toggler bg-white"
                 type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar"
@@ -51,30 +51,31 @@ const App = () => {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-cart"
+                  className="bi bi-cart"
                   viewBox="0 0 16 16"
                 >
                   <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
                 </svg>
               </button>
               <div
-                class="offcanvas offcanvas-end ancho"
-                tabindex="-1"
+                className="offcanvas offcanvas-end ancho"
+                tabIndex="-1"
                 id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel"
               >
-                <div class="offcanvas-header">
+                <div className="offcanvas-header">
                   {/* texto */}
-                  <h3 className="display-6 mt-2 mb-3">Carrito de Compras</h3>
                   <button
                     type="button"
-                    class="btn-close"
+                    className="btn-close"
                     data-bs-dismiss="offcanvas"
                     aria-label="Close"
                   ></button>
+                  <h3 className="display-6 mt-2 mb-3 ms-0">Carrito de Compras</h3>
+                  
                 </div>
-                <div class="offcanvas-body">
-                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ">
+                <div className="offcanvas-body">
+                  <ul className="navbar-nav justify-content-end flex-grow-1 pe-3 ">
                     <div className="mb-3 carro2 ">
                       <Carrito />
                       <button className="btn btn-warning mt-2">Comprar</button>
@@ -86,7 +87,7 @@ const App = () => {
           </div>
         </nav>
 
-        <div className="container contenedor mb-5 mt-0">
+        <div className="contenedor mb-5 mt-0 ps-5 pe-5">
           <main>
             <Routes>
               <Route path="*" element={<Error404 />} />
@@ -98,14 +99,14 @@ const App = () => {
         </div>
       </div>
       <div className="bd-footer py-4 py-md-5 mt-5 bg-light ">
-        <div class="container text-center">
-          <div class="row align-items-start">
-            <div class="col">One of three columns</div>
-            <div class="col">One of three columns</div>
-            <div class="col">One of three columns</div>
-            <div class="col">One of three columns</div>
-            <div class="col">One of three columns</div>
-            <div class="col">One of three columns</div>
+        <div className="container text-center">
+          <div className="row align-items-start">
+            <div className="col">One of three columns</div>
+            <div className="col">One of three columns</div>
+            <div className="col">One of three columns</div>
+            <div className="col">One of three columns</div>
+            <div className="col">One of three columns</div>
+            <div className="col">One of three columns</div>
           </div>
         </div>
       </div>

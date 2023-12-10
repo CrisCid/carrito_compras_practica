@@ -7,3 +7,10 @@
     display:flex;
     flex-direction: column;
 }
+.colores{
+    color:gray;
+}
+img{
+    width: 10vh!important;
+    height: 10vh!important;
+}
