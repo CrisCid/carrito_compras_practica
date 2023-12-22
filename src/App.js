@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { NavLink, Routes, Route } from "react-router-dom";
 import Tienda from "./componentes/tienda/Tienda";
-import Blog from "./componentes/Blog";
+import Blog from "./componentes/blog/Blog";
 import Inicio from "./componentes/Inicio";
 import Error404 from "./componentes/Error404";
 import Carrito from "./componentes/tienda/carrito";
