@@ -21,7 +21,11 @@ const App = ({}) => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
   const categorias = CategoriasApi();
   const handleCategoriaSeleccionada = (categoria) => {
+    if(categoria === "todo"){
+      setCategoriaSeleccionada('Clothes');
+    }else{
     setCategoriaSeleccionada(categoria);
+    }
   }
   /* console.log('categoria',categoriaSeleccionada); */
   return (
@@ -43,7 +47,7 @@ const App = ({}) => {
               <ul className="dropdown-menu">
       
                 <li>
-                <NavLink to="/tienda" className={"dropdown-item"} onClick={() => handleCategoriaSeleccionada(null)}>Todo</NavLink>
+                <NavLink to="/tienda" className={"dropdown-item"} onClick={() => handleCategoriaSeleccionada('todo')}>Todo</NavLink>
                 </li>
                 
                   {categorias.map((categoria, index)=>{

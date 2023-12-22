@@ -8,14 +8,18 @@ const Productos = ({ categoria, productos, agregarProductoAlCarrito }) => {
   const categoriaa = categoria;
  
   const productss = productosApi();
-  const productosFiltrados = categoriaa ? productss.filter( (producto) => producto.category.name === categoriaa.categoria)
+
+    const productosFiltrados = categoriaa ? productss.filter( (producto) => producto.category.name === categoriaa.categoria)
     : productss;
-  
+    console.log('Categoria', categoriaa.categoria, productosFiltrados)
+
   return (
     <div>
       {/* Contenedor de la parte de los productos */}
+        
       <div className="contenedorProductos d-grid row d-flex col-sm-12">
         {productosFiltrados.map((producto, index) => {
+          <p>{categoriaa.name}</p>
           return (
             /* Separacion de cada producto por columna */
             <div className="col-sm-2 mb-4" key={index}>
@@ -36,7 +40,7 @@ const Productos = ({ categoria, productos, agregarProductoAlCarrito }) => {
                     </p>
 
                     <p className="fs-6 mb-0">${producto.price}</p>
-                    
+
                   </div>
 
                   <div className="d-flex flex-column justify-content-end  h-100">
