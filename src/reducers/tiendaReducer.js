@@ -22,13 +22,13 @@ const reducer = (estado = estadoInicial, accion) => {
     switch (accion.type) {
         case 'AGREGAR_PRODUCTO_AL_CARRITO':
 
-            const { nombre, idProductoAAgregar, precio,imagen } = accion;
+            const { title, idProductoAAgregar, price, images } = accion;
 
             // Si el carrito esta vacio entonces agregamos el product
             if (estado.carrito.length === 0) {
                 return {
                     ...estado,
-                    carrito: [{ id: idProductoAAgregar, nombre: nombre, cantidad: 1, precio: precio,imagen:imagen}],
+                    carrito: [{ id: idProductoAAgregar, title: title, cantidad: 1, price: price,images: images}],
                 
 
                 }
@@ -52,14 +52,14 @@ const reducer = (estado = estadoInicial, accion) => {
                         // Si el producto del id es igual al producto que queremos agregar, entonces sera la misma cantidad mas 1
                         if (productoDeCarrito.id === idProductoAAgregar) {
                             const cantidad = nuevoCarrito[index].cantidad;
-                            const precio = nuevoCarrito[index].precio;
-                            const precios = precio;
+                            const price = nuevoCarrito[index].price;
+                            const precios = price;
                             nuevoCarrito[index] = {
                                 id: idProductoAAgregar,
-                                nombre: nombre,
+                                title: title,
                                 cantidad: cantidad + 1,
-                                imagen: imagen,
-                                precio: precios,
+                                images: images,
+                                price: precios,
                                 
                             }
                         }
@@ -68,10 +68,10 @@ const reducer = (estado = estadoInicial, accion) => {
                 } else {
                     nuevoCarrito.push({
                         id: idProductoAAgregar,
-                        nombre: nombre,
+                        title: title,
                         cantidad: 1,
-                        precio: precio,
-                        imagen: imagen,
+                        price: price,
+                        images: images,
                         
                     });
                 }

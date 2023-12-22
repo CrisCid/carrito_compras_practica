@@ -2,13 +2,13 @@
   background: #fff;
 }
 .menu{
-  display: flex;
+ /*  display: flex; */
   flex-direction: column;
   background: white;
 }
-.menucarro{
+/* .menucarro{
   align-items: flex-end!important;
-}
+} */
 .menulinks{
   align-items: flex-start!important;
   
@@ -30,4 +30,11 @@
 }
 .ancho{
   width: 40vh!important;
+}
+.barra{
+
+}
+.menucarro{
+/*   align-items: flex-end!important; */
+
 }

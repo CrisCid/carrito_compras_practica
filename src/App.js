@@ -1,46 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { NavLink, Routes, Route } from "react-router-dom";
-import Tienda from "./componentes/Tienda";
+import Tienda from "./componentes/tienda/Tienda";
 import Blog from "./componentes/Blog";
 import Inicio from "./componentes/Inicio";
 import Error404 from "./componentes/Error404";
-import Carrito from "./componentes/carrito";
+import Carrito from "./componentes/tienda/carrito";
 
-import { Provider } from "react-redux";
+import { Provider, connect } from "react-redux";
 import { legacy_createStore } from "redux";
 import reducer from "./reducers/tiendaReducer";
 import "./css/App.css";
 /* Bootstrap */
 import "bootstrap/dist/css/bootstrap.min.css";
-
-const App = () => {
+import CategoriasApi from "./api/categoriasApi";
+const App = ({}) => {
   // el reducer es una funcion, que edita nuestro estado global
 
   const store = legacy_createStore(reducer);
-  
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
+  const categorias = CategoriasApi();
+  const handleCategoriaSeleccionada = (categoria) => {
+    setCategoriaSeleccionada(categoria);
+  }
+  /* console.log('categoria',categoriaSeleccionada); */
   return (
     <Provider store={store}>
       <div className="">
         {/* Contenedor de la barra */}
-        <nav className=" navbar justify-content-evenly sticky-top menu w-auto mt-0  border-bottom">
+        <nav className=" navbar sticky-top menu  mt-0  border-bottom">
           <div className="row navbar-brand rounded barra ">
-            <div className="col-3 menulinks ">
+            <div className="col menulinks ">
               <NavLink to="/">Inicio</NavLink>
             </div>
 
-            <div className="col-3 menulinks">
+            <div className="col menulinks">
               <NavLink to="/blog">Blog</NavLink>
             </div>
 
-            <div className="col-3 menulinks">
-              <NavLink to="/tienda">Tienda</NavLink>
+            <div className="col menulinks  dropdown">
+                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias </a>
+              <ul className="dropdown-menu">
+      
+                <li>
+                <NavLink to="/tienda" className={"dropdown-item"} onClick={() => handleCategoriaSeleccionada(null)}>Todo</NavLink>
+                </li>
+                
+                  {categorias.map((categoria, index)=>{
+                    return(
+                      <li key={index}>
+                      <a className="dropdown-item" href="#" onClick={() => handleCategoriaSeleccionada(categoria.name)}>
+                        {categoria.name}
+                      </a>
+                     </li>
+                    )
+                  }) }
+                
+              </ul>
+
             </div>
 
             {/* Carro */}
-            <div className="container-fluid col-3 menucarro">
+            <div className=" col menucarro d-flex flex-column flex-row-reverse">
               <button
-                className="navbar-toggler bg-white"
+                className="navbar-toggler bg-white "
                 type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar"
@@ -71,17 +94,19 @@ const App = () => {
                     data-bs-dismiss="offcanvas"
                     aria-label="Close"
                   ></button>
-                  <h3 className="display-6 mt-2 mb-0 ms-0 col">Carrito de Compras</h3>
-                  
+                  <h3 className="display-6 mt-2 mb-0 ms-0 col">
+                    Carrito de Compras
+                  </h3>
                 </div>
                 <div className="offcanvas-body">
                   <ul className="navbar-nav justify-content-end flex-grow-1 pe-3 h-100">
                     <div className="mb-3 carro2 ">
                       <Carrito />
                       <div className="d-grid gap-2">
-                        <button className="btn btn-dark btn-lg mt-2">Comprar</button>
+                        <button className="btn btn-dark btn-lg mt-2">
+                          Comprar
+                        </button>
                       </div>
-                      
                     </div>
                   </ul>
                 </div>
@@ -96,7 +121,7 @@ const App = () => {
               <Route path="*" element={<Error404 />} />
               <Route path="/" element={<Inicio />} />
               <Route path="/Blog" element={<Blog />} />
-              <Route path="/Tienda" element={<Tienda />} />
+              <Route path="/Tienda" element={<Tienda categoria={categoriaSeleccionada}/>} />
             </Routes>
           </main>
         </div>
