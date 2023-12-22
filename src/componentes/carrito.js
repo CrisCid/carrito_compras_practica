@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "../css/Carrito.css";
 
 const Carrito = ({ carrito }) => {
+  
   return (
     <div className="carrito1">
       <div className="carrito2 h-100 border border-start overflow-auto">

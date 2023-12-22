@@ -52,3 +52,7 @@ img{
 .tiendaimagenes{
   
 }
+.texto{
+    overflow: hidden!important;
+    width: 125%!important;
+}
