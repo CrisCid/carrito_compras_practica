@@ -5,8 +5,8 @@ Primero instalar lo siguiente
 Para las barras de navegacion
 >npm install react-router-dom
 
-Para los estilos
->npm install --save styled-components
+~~Para los estilos~~
+>~~npm install --save styled-components~~
 
 Redux
 
