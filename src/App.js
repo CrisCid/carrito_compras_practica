@@ -53,9 +53,9 @@ const App = () => {
                   {categorias.map((categoria, index)=>{
                     return(
                       <li key={index}>
-                      <NavLink className="dropdown-item" to="/tienda" onClick={() => handleCategoriaSeleccionada(categoria.name)}>
+                      <a className="dropdown-item" /* to="/tienda" */ href="#" onClick={() => handleCategoriaSeleccionada(categoria.name)}>
                         {categoria.name}
-                      </NavLink>
+                      </a>
                      </li>
                     )
                   }) }
