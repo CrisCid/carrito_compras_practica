@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import "./../../css/Productos.css";
 import productosApi from "../../api/productosApi";
@@ -9,23 +9,26 @@ const Productos = ({ categoria, productos, agregarProductoAlCarrito }) => {
  
   const productss = productosApi();
 
-    const productosFiltrados = categoriaa ? productss.filter( (producto) => producto.category.name === categoriaa.categoria)
-    : productss;
-    console.log('Categoria', categoriaa.categoria, productosFiltrados)
+  let productosFiltrados = categoriaa ? productss.filter( (producto) => producto.category.name === categoriaa.categoria)
+  : productss;
+
+  if(categoriaa.categoria === null){
+    productosFiltrados = productss;
+  }
 
   return (
     <div>
       {/* Contenedor de la parte de los productos */}
         
-      <div className="contenedorProductos d-grid row d-flex col-sm-12">
+      <div className="contenedorProductos d-grid row d-flex col-sm-12 ">
         {productosFiltrados.map((producto, index) => {
           <p>{categoriaa.name}</p>
           return (
             /* Separacion de cada producto por columna */
-            <div className="col-sm-2 mb-4" key={index}>
+            <div className="col-sm-2 mb-4 " key={index}>
               
               {/* Formato de tarjeta */}
-              <div className="card col-sm-12 h-100">
+              <div className="card col-sm-12 h-100 shadow">
                 <div
                   className="product m-2 card-body d-flex flex-column me-5 ms-5 mb-0 mt-0"
                   key={index}
@@ -33,6 +36,7 @@ const Productos = ({ categoria, productos, agregarProductoAlCarrito }) => {
                   <img
                     className="mb-3 tiendaimagenes rounded"
                     src={producto.images}
+                    alt="Imagen"
                   ></img>
                   <div className="d-flex flex-column  align-center align-items-center ">
                     <p className="fs-6 mb-0 text-break font-monospace text-nowrap texto">

@@ -1,15 +1,15 @@
-import React, { useReducer, useState } from "react";
+import React from "react";
 import BlogsApi from "../../api/blogsApi";
 
-const ContenidoBlog = ({}) => {
+const ContenidoBlog = () => {
   const contenido = BlogsApi();
   /*  console.log(contenido[1].name,contenido[1].email); */
   return (
     <div className="row d-flex d-grid col-sm-12">
-      {contenido.map((content, index) => {
+      {contenido.slice(0,16).map((content, index) => {
         return (
           <div className="col-sm-3 mb-4">
-            <div className="card  h-100 ">
+            <div className="card  h-100 shadow">
             <div
               key={index}
               className="border p-3 align-center align-items-center card-body"
@@ -21,7 +21,7 @@ const ContenidoBlog = ({}) => {
             </div>
             </div>
           </div>
-        );
+        )
       })}
     </div>
   );

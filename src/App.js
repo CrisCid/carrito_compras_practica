@@ -7,14 +7,14 @@ import Inicio from "./componentes/Inicio";
 import Error404 from "./componentes/Error404";
 import Carrito from "./componentes/tienda/carrito";
 
-import { Provider, connect } from "react-redux";
+import { Provider} from "react-redux";
 import { legacy_createStore } from "redux";
 import reducer from "./reducers/tiendaReducer";
 import "./css/App.css";
 /* Bootstrap */
 import "bootstrap/dist/css/bootstrap.min.css";
 import CategoriasApi from "./api/categoriasApi";
-const App = ({}) => {
+const App = () => {
   // el reducer es una funcion, que edita nuestro estado global
 
   const store = legacy_createStore(reducer);
@@ -22,7 +22,7 @@ const App = ({}) => {
   const categorias = CategoriasApi();
   const handleCategoriaSeleccionada = (categoria) => {
     if(categoria === "todo"){
-      setCategoriaSeleccionada('Clothes');
+      setCategoriaSeleccionada(null);
     }else{
     setCategoriaSeleccionada(categoria);
     }
@@ -43,9 +43,9 @@ const App = ({}) => {
             </div>
 
             <div className="col menulinks  dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias </a>
+                <NavLink className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias </NavLink>
               <ul className="dropdown-menu">
-      
+       
                 <li>
                 <NavLink to="/tienda" className={"dropdown-item"} onClick={() => handleCategoriaSeleccionada('todo')}>Todo</NavLink>
                 </li>
@@ -53,9 +53,9 @@ const App = ({}) => {
                   {categorias.map((categoria, index)=>{
                     return(
                       <li key={index}>
-                      <a className="dropdown-item" href="#" onClick={() => handleCategoriaSeleccionada(categoria.name)}>
+                      <NavLink className="dropdown-item" to="/tienda" onClick={() => handleCategoriaSeleccionada(categoria.name)}>
                         {categoria.name}
-                      </a>
+                      </NavLink>
                      </li>
                     )
                   }) }
