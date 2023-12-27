@@ -1,28 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import "./../../css/Productos.css";
 import productosApi from "../../api/productosApi";
 
-const Productos = ({ categoria, productos, agregarProductoAlCarrito }) => {
+function  Productos  ({ categoria, agregarProductoAlCarrito })  {
+  const [productosFiltrado, setProductosFiltrado] = useState<any[]>();
+  useEffect(()=>{
+    obtenerProductos()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+  useEffect(()=>{
+    obtenerProductos()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[categoria]);
 
-  const categoriaa = categoria;
- 
-  const productss = productosApi();
-
-  let productosFiltrados = categoriaa ? productss.filter( (producto) => producto.category.name === categoriaa.categoria)
-  : productss;
-
-  if(categoriaa.categoria === null){
-    productosFiltrados = productss;
+  const obtenerProductos = async() =>{
+    const categoriaa = categoria;
+    const productss = await productosApi();
+  
+  
+    let productosFiltrados:any[] = [] 
+    productosFiltrados = categoriaa ? productss.filter( (producto) => producto.category === categoriaa.categoria)
+    : productss;
+    setProductosFiltrado(productosFiltrados);
+    if(categoriaa.categoria === null){
+      setProductosFiltrado(productss)
+    }
   }
+  
 
   return (
     <div>
       {/* Contenedor de la parte de los productos */}
         
       <div className="contenedorProductos d-grid row d-flex col-sm-12 ">
-        {productosFiltrados.map((producto, index) => {
-          <p>{categoriaa.name}</p>
+        {productosFiltrado && productosFiltrado.map((producto, index) => {
+        /*   <p>{categoriaa.name}</p> */
           return (
             /* Separacion de cada producto por columna */
             <div className="col-sm-2 mb-4 " key={index}>
@@ -35,7 +48,7 @@ const Productos = ({ categoria, productos, agregarProductoAlCarrito }) => {
                 >
                   <img
                     className="mb-3 tiendaimagenes rounded"
-                    src={producto.images}
+                    src={producto.image}
                     alt="Imagen"
                   ></img>
                   <div className="d-flex flex-column  align-center align-items-center ">
@@ -55,7 +68,7 @@ const Productos = ({ categoria, productos, agregarProductoAlCarrito }) => {
                           producto.id,
                           producto.title,
                           producto.price,
-                          producto.images
+                          producto.image
                         )
                       }
                     >
@@ -73,8 +86,9 @@ const Productos = ({ categoria, productos, agregarProductoAlCarrito }) => {
 };
 
 const mapStateToProps = (estado) => {
+  console.log('Estado?:',estado);
   return {
-    productss: estado.productss,
+    productss: estado.productosFiltrado,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -83,7 +97,7 @@ const mapDispatchToProps = (dispatch) => {
       idProductoAAgregar,
       title,
       price,
-      images,
+      image,
       subtotal
     ) => {
       dispatch({
@@ -91,7 +105,7 @@ const mapDispatchToProps = (dispatch) => {
         idProductoAAgregar: idProductoAAgregar,
         title: title,
         price: price,
-        images: images,
+        image: image,
         subtotal: subtotal,
       });
     },

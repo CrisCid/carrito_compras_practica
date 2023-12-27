@@ -1,4 +1,4 @@
-const categoriaInitialState = {
+/* const categoriaInitialState = {
     categoriaSeleccionada: 'todo',
 }
 
@@ -9,6 +9,7 @@ function categoriaReducer(state = categoriaInitialState, action){
             ...state,
             categoriaSeleccionada: action.categoriaID,
         }
+        break;
         default: state;
     }
-}
+} */

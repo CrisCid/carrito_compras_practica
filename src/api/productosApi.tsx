@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-const ProductosApi = () => {
+const ProductosApi = async():Promise<any[]> => {
     const [productss, setProductos] = useState([]);
-    let nuevosProductos = [];
     const fetchCarro = async () => {
-        let respuesta = await fetch("https://api.escuelajs.co/api/v1/products");
+        let respuesta = await fetch("https://fakestoreapi.com/products");
         const data = await respuesta.json();
         setProductos(data);
     };
-   /*  console.log('revisar', productss); */
+
     useEffect(() => {
         fetchCarro();
     }, []);

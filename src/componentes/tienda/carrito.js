@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 import "./../../css/Carrito.css";
 
 const Carrito = ({ carrito }) => {
-  /* console.log('carrito',carrito); */
+  const carro =  carrito;
   return (
     <div className="carrito1">
       <div className="carrito2 h-100 border border-start overflow-auto">
-        {carrito.length > 0 ? (
-          carrito.map((producto, index) => {
+        {carro.length > 0 ? (
+          
+          carro.map((producto, index) => {
             return (
               <div
                 className=" border-bottom "
@@ -18,6 +19,7 @@ const Carrito = ({ carrito }) => {
                 <div className="w-100 row">
                   <div className="flex-column aling-items-start h-50 col-9 text-break">
                     <p className=" ms-1 mb-0 h-50 fs-5 ">{producto.title}</p>
+                    
                   </div>
 
                   <div className="row flex-column w-50 col-4">
@@ -31,7 +33,8 @@ const Carrito = ({ carrito }) => {
                   <div className="col me-0 pe-0 text-end mt-2 col-6">
                     <img
                       className="mb-3 tiendaimagenes rounded carrocompras"
-                      src={producto.images}
+                      src={producto.image}
+                      alt="imagen"
                     ></img>
                   </div>
                 </div>
@@ -55,6 +58,7 @@ const Carrito = ({ carrito }) => {
 
 const mapStateToProps = (estado) => {
   return {
+    ...estado,
     carrito: estado.carrito,
   };
 };

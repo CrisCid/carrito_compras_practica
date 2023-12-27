@@ -23,11 +23,16 @@ const App = () => {
   const handleCategoriaSeleccionada = (categoria) => {
     if(categoria === "todo"){
       setCategoriaSeleccionada(null);
-    }else{
-    setCategoriaSeleccionada(categoria);
     }
+     if(window.location.pathname !== "/tienda"){
+      window.location.pathname = "/tienda";
+      
+    }
+    setCategoriaSeleccionada(categoria);
+
+
   }
-  /* console.log('categoria',categoriaSeleccionada); */
+
   return (
     <Provider store={store}>
       <div className="">
@@ -37,33 +42,26 @@ const App = () => {
             <div className="col menulinks ">
               <NavLink to="/">Inicio</NavLink>
             </div>
-
             <div className="col menulinks">
               <NavLink to="/blog">Blog</NavLink>
             </div>
-
             <div className="col menulinks  dropdown">
                 <NavLink className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias </NavLink>
               <ul className="dropdown-menu">
-       
                 <li>
-                <NavLink to="/tienda" className={"dropdown-item"} onClick={() => handleCategoriaSeleccionada('todo')}>Todo</NavLink>
+                <button to="/tienda" className={"dropdown-item"} onClick={() => handleCategoriaSeleccionada('todo')}>Todo</button>
                 </li>
-                
                   {categorias.map((categoria, index)=>{
                     return(
                       <li key={index}>
-                      <NavLink className="dropdown-item" to="/tienda" onClick={() => handleCategoriaSeleccionada(categoria.name)}>
-                        {categoria.name}
-                      </NavLink>
+                      <button className="dropdown-item" to="#" onClick={() => handleCategoriaSeleccionada(categoria)}>
+                        {categoria}
+                      </button>
                      </li>
                     )
                   }) }
-                
               </ul>
-
             </div>
-
             {/* Carro */}
             <div className=" col menucarro d-flex flex-column flex-row-reverse">
               <button
